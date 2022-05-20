@@ -34,6 +34,12 @@ buttonNewAccount.addEventListener("click", createAccount);
 function createAccount() {
   const clientName = prompt("¿A qué cliente le creamos la cuenta?", "nombre");
   const clientSurname = prompt("¿Apellido del susodicho?", "apellido");
+  function generateNumberAccount(max, min) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  let accountNumber = generateNumberAccount(1000, 20000)
+  const newAccount = new Client(clientName, clientSurname, accountNumber)
+  
   arrayClients.find((element)=> {
       if (clientName !== element.Name) {
           alert("No encuentro ese nombre")
@@ -41,6 +47,8 @@ function createAccount() {
       }
       if (clientName === element.Name && clientSurname === element.Surname) {
           
+          arrayClients.push(newAccount)
       }
   })
+  console.log(arrayClients)
 }
